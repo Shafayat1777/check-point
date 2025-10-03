@@ -1,73 +1,69 @@
-# React + TypeScript + Vite
+<!--PROJECT LOGO -->
+<br />
+<div align = "center">
+<p align="center">
+ <img src ="https://i.imgur.com/mxrDruJ.png" alt="Project Logo" width ="200">
+</p>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<h3 align="center">Checkpoint Cloud Systems</h3>
 
-Currently, two official plugins are available:
+<p align="center">
+An Intuitive Way to Implement Cloud Saves For All Your Games!
+</p>
+</div>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
+</details>
+  </ol>
+</details>
+<!-- ABOUT THE PROJECT -->
+<h3 align="left">About The Project</h3>
 
-## React Compiler
+The Games Cloud Saves Project is designed to provide gamers with a seamless and secure way to store and access their game progress across multiple devices. By leveraging cloud storage technology, this project ensures that players can effortlessly sync their game saves, eliminating the frustration of losing progress or being tied to a single device. The system supports cross-platform compatibility, robust data encryption, and an intuitive user interface, making it easy for both casual and dedicated gamers to manage their saves. Our goal is to enhance the gaming experience by offering reliability, accessibility, and peace of mind, allowing players to focus on what matters most—enjoying their games.
+<p align="left">
+List of Features:
+</p>
+<ul>
+<li><a>Auto Sync</a></li>
+<li><a>Upload</a></li>
+<li><a>Download</a></li>
+<li><a>Delete</a></li>
+<li><a>Backup</a></li>
+</ul>
+And more to come!
+You may also suggest changes by forking this repo and creating a pull request or opening an issue.
+Thanks to all the people(Us duhh) that contributed to expanding the project!
+<h4 align="left">Built With</h4>
+<ul>
+<li><a href="https://react.dev"><img src ="https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"></a></li>
+<li><a href="https://www.javascript.com"><img src ="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E"</a></li>
+<li><a href="https://www.typescriptlang.org"><img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white"</a></li>
+<li><a href="https://www.electronjs.org"><img src="https://img.shields.io/badge/Electron-2B2E3A?style=for-the-badge&logo=electron&logoColor=9FEAF9"</a></li>
+</ul>
+ 
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+  
