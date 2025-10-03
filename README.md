@@ -1,73 +1,137 @@
-# React + TypeScript + Vite
+<!--PROJECT LOGO -->
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<br />
+<div align = "center">
+<p align="center">
+ <img src ="https://i.imgur.com/mxrDruJ.png" alt="Project Logo" width ="200">
+</p>
 
-Currently, two official plugins are available:
+<h3 align="center">Checkpoint Cloud Systems</h3>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<p align="center">
+An Intuitive Way to Implement Cloud Saves For All Your Games!
+</p>
+</div>
 
-## React Compiler
+<!-- TABLE OF CONTENTS -->
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
+</details>
+  </ol>
+</details>
+<!-- ABOUT THE PROJECT -->
 
-## Expanding the ESLint configuration
+<h3 align="left">About The Project</h3>
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+The Games Cloud Saves Project is designed to provide gamers with a seamless and secure way to store and access their game progress across multiple devices. By leveraging cloud storage technology, this project ensures that players can effortlessly sync their game saves, eliminating the frustration of losing progress or being tied to a single device. The system supports cross-platform compatibility, robust data encryption, and an intuitive user interface, making it easy for both casual and dedicated gamers to manage their saves. Our goal is to enhance the gaming experience by offering reliability, accessibility, and peace of mind, allowing players to focus on what matters most—enjoying their games.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+<p align="left">
+List of Features:
+</p>
+<ul>
+<li><a>Auto Sync</a></li>
+<li><a>Upload</a></li>
+<li><a>Download</a></li>
+<li><a>Delete</a></li>
+<li><a>Backup</a></li>
+</ul>
+And more to come!
+You may also suggest changes by forking this repo and creating a pull request or opening an issue.
+Thanks to all the people(Us duhh) that contributed to expanding the project!
+<h4 align="left">Built With</h4>
+<ul>
+<li><a href="https://react.dev"><img src ="https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"></a></li>
+<li><a href="https://www.javascript.com"><img src ="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E"></a></li>
+<li><a href="https://www.typescriptlang.org"><img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white"></a></li>
+<li><a href="https://www.electronjs.org"><img src="https://img.shields.io/badge/Electron-2B2E3A?style=for-the-badge&logo=electron&logoColor=9FEAF9"></a></li>
+<li><a href="https://ui.shadcn.com"><img src="https://img.shields.io/badge/shadcn%2Fui-000000?style=for-the-badge&logo=shadcnui&logoColor=white"></a></li>
+<li><a href="https://tailwindcss.com"><img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white"></a></li>
+</ul>
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+<!-- GETTING STARTED -->
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+<h3 align="left">Getting Started</h3>
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+To be added later..
+
+<h4 align="left">Prerequisites</h4>
+
+To be added later..
+
+<h4 align="left">Installation</h4>
+
+To be added later
+
+<!-- USAGE EXAMPLES -->
+
+<h3 align="left">Usage</h3>
+
+---
+
+To be added Later..
+
+<!-- CONTRIBUTING -->
+
+<h3 align="left">Contributing</h3>
+
+---
+
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
+
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+Don't forget to give the project a star! Thanks again!
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b ##########`)
+3. Commit your Changes (`git commit -m '###########'`)
+4. Push to the Branch (`git push origin #############`)
+5. Open a Pull Request
+
+<h4 align="left">Contributors</h4>
+
+<a href="https://github.com/Shafayat1777/check-point/graphs/contributors">
+    <img src ="https://i.imgur.com/4375JjA.png" width ="200" height="150"></a>
+
+<!-- LICENSE -->
+
+<h3 align="left">License</h3>
+
+---
+
+License Information to be added later.
+
+<!-- CONTACT -->
+<h3 align="left">Contacts</h3>
+
+---
+
+<ul>
+<li>Shafayat Hossain - <a href="https://github.com/Shafayat1777">Github</a></li>
+<li>Shafqat Hossain - <a href="https://github.com/ShafqatHossain">Github</a></li>
+</ul>
+
+<p align="right">(<a href="#about-the-project">back to top</a>)</p>
