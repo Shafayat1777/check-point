@@ -125,7 +125,7 @@ Don't forget to give the project a star! Thanks again!
 License Information to be added later.
 
 <!-- CONTACT -->
-<h3 align="left">Contacts</h3>
+<h3 align="left">Contact</h3>
 
 ---
 
