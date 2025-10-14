@@ -1,14 +1,15 @@
-import { ModeToggle } from '@/components/mode-toggle';
-import { Button } from '@/components/ui/button';
+import { AppSidebar } from '@/components/sidebar';
+import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
 import { ThemeProvider } from '@/context/theme-provider';
 
 function App() {
     return (
         <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-            <div className="">
-                <ModeToggle />
-                <Button>Click me</Button>
-            </div>
+            <SidebarProvider>
+                <AppSidebar />
+                <SidebarTrigger />
+                <div className=""></div>
+            </SidebarProvider>
         </ThemeProvider>
     );
 }

@@ -25,6 +25,7 @@ export default defineConfig([
                 'error',
                 { vars: 'all', args: 'after-used', ignoreRestSiblings: true },
             ],
+            'only-export-components': 'off',
         },
     },
 ]);
