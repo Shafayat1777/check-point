@@ -1,44 +1,45 @@
-'use client'
+'use client';
 
-import { useId, useState } from 'react'
+import { useEffect, useState } from 'react';
 
-import { MoonIcon, SunIcon } from 'lucide-react'
+import { MoonIcon, SunIcon } from 'lucide-react';
 
-import { Switch } from '@/components/ui/switch'
+import { Label } from '@/components/ui/label';
+import { Switch } from '@/components/ui/switch';
+import { useTheme } from '@/context/theme-provider';
+
+import { useSidebar } from './ui/sidebar';
 
 const ThemeSwitch = () => {
-  const id = useId()
-  const [checked, setChecked] = useState(true)
+    const { setTheme } = useTheme();
+    const { open } = useSidebar();
+    const [checked, setChecked] = useState<boolean>(true);
 
-  const toggleSwitch = () => setChecked(prev => !prev)
+    useEffect(() => {
+        setTheme(checked ? 'dark' : 'light');
+    }, [checked, setTheme]);
 
-  return (
-    <div className='group inline-flex items-center gap-2' data-state={checked ? 'checked' : 'unchecked'}>
-      <span
-        id={`${id}-light`}
-        className='group-data-[state=checked]:text-muted-foreground/70 cursor-pointer text-left text-sm font-medium'
-        aria-controls={id}
-        onClick={() => setChecked(false)}
-      >
-        <SunIcon className='size-4' aria-hidden='true' />
-      </span>
-      <Switch
-        id={id}
-        checked={checked}
-        onCheckedChange={toggleSwitch}
-        aria-labelledby={`${id}-dark ${id}-light`}
-        aria-label='Toggle between dark and light mode'
-      />
-      <span
-        id={`${id}-dark`}
-        className='group-data-[state=unchecked]:text-muted-foreground/70 cursor-pointer text-right text-sm font-medium'
-        aria-controls={id}
-        onClick={() => setChecked(true)}
-      >
-        <MoonIcon className='size-4' aria-hidden='true' />
-      </span>
-    </div>
-  )
-}
+    return (
+        <>
+            <Label htmlFor="icon-label" className="inline cursor-pointer">
+                {checked ? (
+                    <MoonIcon className="inline size-4" aria-hidden="true" />
+                ) : (
+                    <SunIcon className="inline size-4" aria-hidden="true" />
+                )}
+                <span className="sr-only">Toggle theme</span>
+            </Label>
 
-export default ThemeSwitch
+            <Switch
+                id="icon-label"
+                checked={checked}
+                onCheckedChange={setChecked}
+                aria-label="Toggle theme"
+                className="inline"
+                hidden={!open}
+            />
+        </>
+    );
+};
+
+export default ThemeSwitch;

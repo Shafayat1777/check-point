@@ -1,4 +1,4 @@
-import { Plus, Sun, User } from 'lucide-react';
+import { Plus } from 'lucide-react';
 
 import {
     Sidebar,
@@ -10,13 +10,11 @@ import {
     SidebarHeader,
     SidebarMenu,
     SidebarMenuButton,
-    SidebarMenuItem
+    SidebarMenuItem,
 } from '@/components/ui/sidebar';
 import { sidebarItems } from '@/lib/dummy-data';
 
-import { ModeToggle } from './mode-toggle';
 import ThemeSwitch from './theme-switch';
-import { Switch } from './ui/switch';
 
 export function AppSidebar() {
     return (
@@ -24,24 +22,13 @@ export function AppSidebar() {
             <SidebarHeader>
                 <SidebarMenu>
                     <SidebarMenuItem>
-                        <SidebarMenuButton className="bg-primary" asChild>
-                            <User /> 
-                        </SidebarMenuButton>
-                    </SidebarMenuItem>
-                    <SidebarMenuItem>
-                        <SidebarMenuButton className="bg-primary" asChild>
-                            <ModeToggle /> 
-                        </SidebarMenuButton>
-                    </SidebarMenuItem>
-                    <SidebarMenuItem>
-                        <SidebarMenuButton className="bg-primary" asChild>
-                            <ThemeSwitch /> 
-                        </SidebarMenuButton>
-                    </SidebarMenuItem>
-                    <SidebarMenuItem>
-                        <SidebarMenuButton >
-                            <Sun />
-                            {/* <Switch />  */}
+                        <SidebarMenuButton
+                            className="hover:bg-sidebar hover:text-sidebar-foreground active:bg-sidebar active:text-sidebar-foreground cursor-default"
+                            asChild
+                        >
+                            <div className="flex items-center gap-4">
+                                <ThemeSwitch />
+                            </div>
                         </SidebarMenuButton>
                     </SidebarMenuItem>
                 </SidebarMenu>
