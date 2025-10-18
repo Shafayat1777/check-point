@@ -14,6 +14,7 @@ import {
 } from '@/components/ui/sidebar';
 import { sidebarItems } from '@/lib/dummy-data';
 
+import { AddGames } from './add-games';
 import ThemeSwitch from './theme-switch';
 
 export function AppSidebar() {
@@ -55,9 +56,11 @@ export function AppSidebar() {
             <SidebarFooter>
                 <SidebarMenu>
                     <SidebarMenuItem>
-                        <SidebarMenuButton className="bg-primary">
-                            <Plus /> Add Game
-                        </SidebarMenuButton>
+                        <AddGames>
+                            <SidebarMenuButton className="bg-primary">
+                                <Plus /> Add Game
+                            </SidebarMenuButton>
+                        </AddGames>
                     </SidebarMenuItem>
                 </SidebarMenu>
             </SidebarFooter>

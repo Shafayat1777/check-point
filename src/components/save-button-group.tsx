@@ -3,9 +3,11 @@ import { Download, Trash2, Upload } from 'lucide-react';
 import { RippleButton } from '@/components/ui/ripple-button';
 import { cn } from '@/lib/utils';
 
+import DeleteSavePopup from './delete-save-popup';
+
 const SaveButtonGroup = ({
     className = '',
-    variant= 'default',
+    variant = 'default',
 }: {
     className?: string;
     variant?:
@@ -27,23 +29,25 @@ const SaveButtonGroup = ({
                 variant={variant}
                 className="rounded-none rounded-l-md shadow-none focus-visible:z-10"
             >
-                <Upload className='text-accent'/>
+                <Upload className="text-accent" />
                 Upload
             </RippleButton>
             <RippleButton
-                 variant={variant}
+                variant={variant}
                 className="rounded-none shadow-none focus-visible:z-10"
             >
-                <Download className='text-secondary'/>
+                <Download className="text-secondary" />
                 Download
             </RippleButton>
-            <RippleButton
-                 variant={variant}
-                className="rounded-none rounded-r-md shadow-none focus-visible:z-10"
-            >
-                <Trash2 className='text-primary' />
-                Delete
-            </RippleButton>
+            <DeleteSavePopup>
+                <RippleButton
+                    variant={variant}
+                    className="rounded-none rounded-r-md shadow-none focus-visible:z-10"
+                >
+                    <Trash2 className="text-primary" />
+                    Delete
+                </RippleButton>
+            </DeleteSavePopup>
         </div>
     );
 };
