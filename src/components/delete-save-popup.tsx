@@ -2,10 +2,12 @@ import { FileWarningIcon } from 'lucide-react'
 
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { RippleButton } from './ui/ripple-button'
+import { useState } from 'react'
 
 const DeleteSavePopup = ({ children }: { children: React.ReactNode }) => {
+  const [open, setOpen] = useState(false)
   return (
-    <Popover>
+    <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         {children}
       </PopoverTrigger>
@@ -22,7 +24,7 @@ const DeleteSavePopup = ({ children }: { children: React.ReactNode }) => {
             </p>
           </div>
           <div className='grid w-full grid-cols-2 gap-2'>
-            <RippleButton variant='secondary' size='sm'>
+            <RippleButton variant='secondary' size='sm' onClick={() => setOpen(false)}>
               Cancel
             </RippleButton>
             <RippleButton variant='destructive' size='sm'>
