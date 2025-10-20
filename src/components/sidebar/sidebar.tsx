@@ -15,7 +15,7 @@ import {
 import { sidebarItems } from '@/lib/dummy-data';
 
 import { AddGames } from './add-games';
-import ThemeSwitch from './theme-switch';
+import ThemeSwitch from '../theme-switch';
 
 export function AppSidebar() {
     return (

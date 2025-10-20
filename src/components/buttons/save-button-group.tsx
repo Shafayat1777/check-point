@@ -3,7 +3,7 @@ import { Download, Trash2, Upload } from 'lucide-react';
 import { RippleButton } from '@/components/ui/ripple-button';
 import { cn } from '@/lib/utils';
 
-import DeleteSavePopup from './delete-save-popup';
+import DeleteSavePopup from '../delete-save-popup';
 
 const SaveButtonGroup = ({
     className = '',

@@ -1,5 +1,5 @@
-import ImageBox from "./image-box";
-import SaveButtonGroup from "./save-button-group";
+import SaveButtonGroup from '../buttons/save-button-group';
+import ImageBox from '../image-box';
 
 const SaveCard = () => {
     return (

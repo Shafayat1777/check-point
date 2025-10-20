@@ -2,6 +2,7 @@
     "appId": "com.parthunax.check-point",
     "files": ["dist-electron", "dist-react"],
     "icon": "./icon",
+    "extraResources": ["dist-electron/preload.cjs"],
     "mac": {
         "target": ["dmg"]
     },

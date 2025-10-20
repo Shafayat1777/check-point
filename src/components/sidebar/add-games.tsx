@@ -7,14 +7,17 @@ import {
 } from '@/components/ui/popover';
 
 import LocationSelect from './location-select';
-import { RippleButton } from './ui/ripple-button';
+import { RippleButton } from '../ui/ripple-button';
 
 export function AddGames({ children }: { children: React.ReactNode }) {
     const [open, setOpen] = useState(false);
     return (
         <Popover open={open} onOpenChange={setOpen}>
             <PopoverTrigger asChild>{children}</PopoverTrigger>
-            <PopoverContent className="w-lg">
+            <PopoverContent
+                className="w-lg"
+                onInteractOutside={(e) => e.preventDefault()}
+            >
                 <div className="flex flex-col gap-4">
                     <LocationSelect />
 
