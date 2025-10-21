@@ -1,10 +1,11 @@
-import { BrowserWindow, app, dialog, ipcMain } from 'electron';
+import { BrowserWindow, app } from 'electron';
 import path from 'path';
 
 import { getPreloadPath } from './path-resolver.js';
+import { registerIpcHandlers } from './register-ipc-handelers.js';
 import { isDev } from './utils.js';
 
-app.on('ready', () => {
+app.whenReady().then(() => {
     const mainWindow = new BrowserWindow({
         webPreferences: {
             preload: getPreloadPath(),
@@ -21,34 +22,5 @@ app.on('ready', () => {
         );
     }
 
-    // Window control events
-    ipcMain.on('window-control', (event, action) => {
-        if (!mainWindow) return;
-        switch (action) {
-            case 'minimize':
-                mainWindow.minimize();
-                break;
-            case 'maximize':
-                if (mainWindow.isMaximized()) {
-                    mainWindow.unmaximize();
-                } else {
-                    mainWindow.maximize();
-                }
-                break;
-            case 'close':
-                mainWindow.close();
-                break;
-        }
-    });
-});
-
-// ✅ Add this to handle folder dialog
-ipcMain.handle('select-folder', async () => {
-    const result = await dialog.showOpenDialog({
-        properties: ['openDirectory'],
-        title: 'Select Game Save Folder',
-    });
-
-    if (result.canceled) return null;
-    return result.filePaths[0];
+    registerIpcHandlers(mainWindow);
 });

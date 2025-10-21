@@ -20,7 +20,7 @@ import ThemeSwitch from '../theme-switch';
 export function AppSidebar() {
     return (
         <Sidebar collapsible="icon">
-            <SidebarHeader>
+            <SidebarHeader className='mt-10'>
                 <SidebarMenu>
                     <SidebarMenuItem>
                         <SidebarMenuButton
