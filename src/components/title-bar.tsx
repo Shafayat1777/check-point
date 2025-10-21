@@ -6,7 +6,7 @@ export default function TitleBar() {
         <div className="flex h-10 items-center justify-between border-b border-b-sidebar-border bg-background text-primary select-none">
             {/* App title (draggable area) */}
             <div className="drag flex h-full flex-1 items-center px-4 text-sm font-medium tracking-wide">
-                My App
+                Checkpoint
             </div>
 
             {/* Window control buttons */}
