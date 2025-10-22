@@ -1,11 +1,9 @@
-import { Download, Trash2, Upload } from 'lucide-react';
+import { ArchiveRestore, CloudAlert, DatabaseBackup } from 'lucide-react';
 
-import { RippleButton } from '@/components/ui/ripple-button';
 import { cn } from '@/lib/utils';
+import { RippleButton } from '@/ui/components/ui/ripple-button';
 
-import DeleteSavePopup from '../delete-save-popup';
-
-const SaveButtonGroup = ({
+const ButtonGroupRipple = ({
     className = '',
     variant = 'default',
 }: {
@@ -29,27 +27,25 @@ const SaveButtonGroup = ({
                 variant={variant}
                 className="rounded-none rounded-l-md shadow-none focus-visible:z-10"
             >
-                <Upload className="text-accent" />
-                Upload
+                <DatabaseBackup />
+                Backup
             </RippleButton>
             <RippleButton
                 variant={variant}
                 className="rounded-none shadow-none focus-visible:z-10"
             >
-                <Download className="text-secondary" />
-                Download
+                <ArchiveRestore />
+                Restore
             </RippleButton>
-            <DeleteSavePopup>
-                <RippleButton
-                    variant={variant}
-                    className="rounded-none rounded-r-md shadow-none focus-visible:z-10"
-                >
-                    <Trash2 className="text-primary" />
-                    Delete
-                </RippleButton>
-            </DeleteSavePopup>
+            <RippleButton
+                variant={variant}
+                className="rounded-none rounded-r-md shadow-none focus-visible:z-10"
+            >
+                <CloudAlert />
+                Sync
+            </RippleButton>
         </div>
     );
 };
 
-export default SaveButtonGroup;
+export default ButtonGroupRipple;

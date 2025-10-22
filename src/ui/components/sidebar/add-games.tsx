@@ -4,10 +4,10 @@ import {
     Popover,
     PopoverContent,
     PopoverTrigger,
-} from '@/components/ui/popover';
+} from '@/ui/components/ui/popover';
 
-import LocationSelect from './location-select';
 import { RippleButton } from '../ui/ripple-button';
+import LocationSelect from './location-select';
 
 export function AddGames({ children }: { children: React.ReactNode }) {
     const [open, setOpen] = useState(false);

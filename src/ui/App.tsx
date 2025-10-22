@@ -1,7 +1,7 @@
-import { AppSidebar } from '@/components/sidebar/sidebar';
-import TitleBar from '@/components/title-bar';
-import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
-import { ThemeProvider } from '@/context/theme-provider';
+import { AppSidebar } from '@/ui/components/sidebar/sidebar';
+import TitleBar from '@/ui/components/title-bar';
+import { SidebarProvider, SidebarTrigger } from '@/ui/components/ui/sidebar';
+import { ThemeProvider } from '@/ui/context/theme-provider';
 import Home from '@/ui/page/home';
 
 function App() {

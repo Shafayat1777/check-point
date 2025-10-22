@@ -4,9 +4,9 @@ import { useEffect, useState } from 'react';
 
 import { MoonIcon, SunIcon } from 'lucide-react';
 
-import { Label } from '@/components/ui/label';
-import { Switch } from '@/components/ui/switch';
-import { useTheme } from '@/context/theme-provider';
+import { Label } from '@/ui/components/ui/label';
+import { Switch } from '@/ui/components/ui/switch';
+import { useTheme } from '@/ui/context/theme-provider';
 
 import { useSidebar } from './ui/sidebar';
 
