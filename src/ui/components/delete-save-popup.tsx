@@ -1,0 +1,51 @@
+import { useState } from 'react';
+
+import { FileWarningIcon } from 'lucide-react';
+
+import {
+    Popover,
+    PopoverContent,
+    PopoverTrigger,
+} from '@/ui/components/ui/popover';
+
+import { RippleButton } from './ui/ripple-button';
+
+const DeleteSavePopup = ({ children }: { children: React.ReactNode }) => {
+    const [open, setOpen] = useState(false);
+    return (
+        <Popover open={open} onOpenChange={setOpen}>
+            <PopoverTrigger asChild>{children}</PopoverTrigger>
+            <PopoverContent className="w-80">
+                <div className="flex flex-col items-center gap-4">
+                    <div className="flex aspect-square size-12 items-center justify-center rounded-full bg-red-500/10">
+                        <FileWarningIcon className="text-destructive size-6" />
+                    </div>
+                    <div className="space-y-2 text-center">
+                        <div className="font-semibold text-balance">
+                            Are you sure you want to delete this file?
+                        </div>
+                        <p className="text-muted-foreground text-sm">
+                            Deleting this file can affect your project and other
+                            files connection so keep in mind before making
+                            decision
+                        </p>
+                    </div>
+                    <div className="grid w-full grid-cols-2 gap-2">
+                        <RippleButton
+                            variant="secondary"
+                            size="sm"
+                            onClick={() => setOpen(false)}
+                        >
+                            Cancel
+                        </RippleButton>
+                        <RippleButton variant="destructive" size="sm">
+                            Delete File
+                        </RippleButton>
+                    </div>
+                </div>
+            </PopoverContent>
+        </Popover>
+    );
+};
+
+export default DeleteSavePopup;

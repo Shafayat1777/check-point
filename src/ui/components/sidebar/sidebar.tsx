@@ -1,5 +1,6 @@
 import { Plus } from 'lucide-react';
 
+import { sidebarItems } from '@/lib/dummy-data';
 import {
     Sidebar,
     SidebarContent,
@@ -11,16 +12,15 @@ import {
     SidebarMenu,
     SidebarMenuButton,
     SidebarMenuItem,
-} from '@/components/ui/sidebar';
-import { sidebarItems } from '@/lib/dummy-data';
+} from '@/ui/components/ui/sidebar';
 
-import { AddGames } from './add-games';
 import ThemeSwitch from '../theme-switch';
+import { AddGames } from './add-games';
 
 export function AppSidebar() {
     return (
         <Sidebar collapsible="icon">
-            <SidebarHeader className='mt-10'>
+            <SidebarHeader className="mt-10">
                 <SidebarMenu>
                     <SidebarMenuItem>
                         <SidebarMenuButton

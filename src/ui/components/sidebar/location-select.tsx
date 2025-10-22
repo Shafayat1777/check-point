@@ -1,7 +1,7 @@
 import { useId, useState } from 'react';
 
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
+import { Input } from '@/ui/components/ui/input';
+import { Label } from '@/ui/components/ui/label';
 
 import { RippleButton } from '../ui/ripple-button';
 
