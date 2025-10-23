@@ -122,7 +122,7 @@ Don't forget to give the project a star! Thanks again!
 
 ---
 
-License Information to be added later.
+License Information to be added later. asdasdasd
 
 <!-- CONTACT -->
 <h3 align="left">Contact</h3>
@@ -132,7 +132,7 @@ License Information to be added later.
 <ul>
 <li>Shafayat Hossain - <a href="https://github.com/Shafayat1777">Github</a></li>
 <li>Shafqat Hossain - <a href="https://github.com/ShafqatHossain">Github</a></li>
-<li>Tahmid Kashfi - <a href="https://github.com/trkZahed">Github</a></li>
+
 </ul>
 
 <p align="right">(<a href="#about-the-project">back to top</a>)</p>
