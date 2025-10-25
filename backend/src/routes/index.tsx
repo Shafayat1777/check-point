@@ -1,10 +1,13 @@
-import { Hono } from "hono";
-import user from "./user";
-import saveFile from "./save-file";
+import { Hono } from 'hono';
+
+import games from './games';
+import saveFile from './save-file';
+import user from './user';
 
 const routes = new Hono();
 
-routes.route("/user", user);
-routes.route("/save-file", saveFile);
+routes.route('/users', user);
+routes.route('/games', games);
+routes.route('/save-files', saveFile);
 
 export default routes;
