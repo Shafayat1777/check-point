@@ -1,4 +1,6 @@
-import { Plus } from 'lucide-react';
+import { NavLink } from 'react-router';
+
+import { House, Plus, Settings } from 'lucide-react';
 
 import { sidebarItems } from '@/lib/dummy-data';
 import {
@@ -32,20 +34,31 @@ export function AppSidebar() {
                             </div>
                         </SidebarMenuButton>
                     </SidebarMenuItem>
+                    <SidebarMenuItem>
+                        <SidebarMenuButton
+                            // className="hover:bg-sidebar hover:text-sidebar-foreground active:bg-sidebar active:text-sidebar-foreground cursor-default"
+                            asChild
+                        >
+                            <NavLink to="/">
+                                <House />
+                                <span>Home</span>
+                            </NavLink>
+                        </SidebarMenuButton>
+                    </SidebarMenuItem>
                 </SidebarMenu>
             </SidebarHeader>
             <SidebarContent>
                 <SidebarGroup>
-                    <SidebarGroupLabel>Application</SidebarGroupLabel>
+                    <SidebarGroupLabel>Games</SidebarGroupLabel>
                     <SidebarGroupContent>
                         <SidebarMenu>
                             {sidebarItems.map((item) => (
                                 <SidebarMenuItem key={item.title}>
                                     <SidebarMenuButton asChild>
-                                        <a href={item.url}>
+                                        <NavLink to={item.url}>
                                             <item.icon />
                                             <span>{item.title}</span>
-                                        </a>
+                                        </NavLink>
                                     </SidebarMenuButton>
                                 </SidebarMenuItem>
                             ))}
@@ -55,6 +68,15 @@ export function AppSidebar() {
             </SidebarContent>
             <SidebarFooter>
                 <SidebarMenu>
+                    <SidebarMenuItem>
+                        <AddGames>
+                            <SidebarMenuButton asChild variant={'outline'}>
+                                <NavLink to="/settings">
+                                    <Settings /> <span>Settings</span>
+                                </NavLink>
+                            </SidebarMenuButton>
+                        </AddGames>
+                    </SidebarMenuItem>
                     <SidebarMenuItem>
                         <AddGames>
                             <SidebarMenuButton className="bg-primary">

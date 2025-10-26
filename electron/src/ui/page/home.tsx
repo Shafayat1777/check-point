@@ -1,18 +1,22 @@
-import ButtonGroupRipple from '@/ui/components/buttons/button-group';
-import SaveCard from '@/ui/components/cards/save-card';
+import { Outlet } from 'react-router';
+
+import { AppSidebar } from '@/ui/components/sidebar/sidebar';
+import { SidebarProvider, SidebarTrigger } from '@/ui/components/ui/sidebar';
+
+import BreadcrumbTabs from '../components/breadcrumb';
 
 const Index = () => {
     return (
-        <div className="flex flex-col gap-4 pr-8">
-            <div className="bg-card mt-10 w-fit rounded p-2">
-                <ButtonGroupRipple />
+        <SidebarProvider>
+            <div className="flex flex-1 pt-10">
+                <AppSidebar />
+                <SidebarTrigger />
+                <div className="w-full">
+                    <BreadcrumbTabs className="mt-10" />
+                    <Outlet />
+                </div>
             </div>
-
-            <div className="flex flex-col gap-4">
-                <SaveCard />
-                <SaveCard />
-            </div>
-        </div>
+        </SidebarProvider>
     );
 };
 

@@ -1,29 +1,25 @@
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react";
+import { Cog, Pickaxe, Axe, BowArrow } from "lucide-react";
 
 export const sidebarItems = [
     {
-        title: 'Home',
-        url: '#',
-        icon: Home,
+        title: 'Minecraft',
+        url: '/games/minecraft',
+        icon: Pickaxe,
     },
     {
-        title: 'Inbox',
-        url: '#',
-        icon: Inbox,
+        title: 'Project Zomboid',
+        url: '/games/project-zomboid',
+        icon: Axe,
     },
     {
-        title: 'Calendar',
-        url: '#',
-        icon: Calendar,
+        title: 'Kenshi',
+        url: '/games/kenshi',
+        icon: Cog,
     },
     {
-        title: 'Search',
-        url: '#',
-        icon: Search,
+        title: 'Bannerlord',
+        url: '/games/bannerlord',
+        icon: BowArrow,
     },
-    {
-        title: 'Settings',
-        url: '#',
-        icon: Settings,
-    },
+   
 ];
