@@ -6,6 +6,7 @@ import { SidebarProvider, SidebarTrigger } from '@/ui/components/ui/sidebar';
 import BreadcrumbTabs from '../components/breadcrumb';
 
 const Index = () => {
+
     return (
         <SidebarProvider>
             <div className="flex flex-1 pt-10">

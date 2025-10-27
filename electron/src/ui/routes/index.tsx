@@ -7,28 +7,35 @@ import NotFound from '@/ui/page/not-found.tsx';
 import SignIn from '@/ui/page/signin.tsx';
 import SignUp from '@/ui/page/signup.tsx';
 
+import ProtectedRoute from './protected-routes';
+import PublicRoute from './public-routes';
+
 export const router = createBrowserRouter([
     {
         path: '/',
-        element: <Home />,
+        element: <ProtectedRoute />,
         errorElement: <NotFound />,
         children: [
             {
-                index: true,
-                element: <Dashboard />,
-            },
-            {
-                path: '/games/:id',
-                element: <Games />,
+                element: <Home />,
+                children: [
+                    {
+                        index: true,
+                        element: <Dashboard />,
+                    },
+                    {
+                        path: 'games/:id',
+                        element: <Games />,
+                    },
+                ],
             },
         ],
     },
     {
-        path: '/signin',
-        element: <SignIn />,
-    },
-    {
-        path: '/signup',
-        element: <SignUp />,
+        element: <PublicRoute />,
+        children: [
+            { path: '/signin', element: <SignIn /> },
+            { path: '/signup', element: <SignUp /> },
+        ],
     },
 ]);
