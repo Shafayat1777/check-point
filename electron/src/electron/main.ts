@@ -10,7 +10,7 @@ app.whenReady().then(() => {
         webPreferences: {
             preload: getPreloadPath(),
         },
-        frame: false,
+        frame: true,
         width: 1000,
         height: 1000,
     });

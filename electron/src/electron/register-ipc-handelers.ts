@@ -27,4 +27,21 @@ export function registerIpcHandlers(mainWindow: Electron.BrowserWindow) {
         });
         return result.canceled ? null : result.filePaths[0];
     });
+
+    ipcMain.handle('auth_signup',async (_,userData) => {
+    console.log('Received Data',userData);
+    return{
+        success: true,
+        message: 'Signup data Received',
+        data: userData
+    };
+    });
+    ipcMain.handle('auth_signin',async (_,userData) => {
+        console.log('Received Data',userData);
+        return{
+            success: true,
+            message: 'Signin data Received',
+            data: userData
+        };
+    });
 }

@@ -5,4 +5,6 @@ contextBridge.exposeInMainWorld('electronAPI', {
     minimize: () => ipcRenderer.send('window-control', 'minimize'),
     maximize: () => ipcRenderer.send('window-control', 'maximize'),
     close: () => ipcRenderer.send('window-control', 'close'),
+    signup: (data) => ipcRenderer.invoke('auth_signup', data),
+    signin: (data) => ipcRenderer.invoke('auth_signin', data),
 } satisfies Window['electronAPI']);

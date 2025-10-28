@@ -1,4 +1,5 @@
-import { RippleButton } from '@/ui/components/ui/ripple-button';
+import { Link } from 'react-router';
+
 import {
     Card,
     CardContent,
@@ -9,11 +10,21 @@ import {
 } from '@/ui/components/ui/card';
 import { Input } from '@/ui/components/ui/input';
 import { Label } from '@/ui/components/ui/label';
-import { Link } from 'react-router';
+import { RippleButton } from '@/ui/components/ui/ripple-button';
 
 const SignUp = () => {
+    const handleClick = async () => {
+       const data = await  window.electronAPI.signup({
+            name: 'Shafquat',
+            email: 'm@example.com',
+            password: 'password',
+        });
+
+        console.log(data);
+    };
+
     return (
-        <div className="h-screen flex items-center justify-center">
+        <div className="flex h-screen items-center justify-center">
             <Card className="w-full max-w-md">
                 <CardHeader>
                     <CardTitle>Create an account</CardTitle>
@@ -52,17 +63,18 @@ const SignUp = () => {
                                 <Label htmlFor="confirmPassword">
                                     Confirm Password
                                 </Label>
-                                <Input
-                                    id="confirmPassword"
-                                    type="password"
-                                />
+                                <Input id="confirmPassword" type="password" />
                             </div>
                         </div>
                     </form>
                 </CardContent>
 
                 <CardFooter className="flex-col gap-2">
-                    <RippleButton type="submit" className="w-full">
+                    <RippleButton
+                        type="submit"
+                        className="w-full"
+                        onClick={() => handleClick()}
+                    >
                         Sign Up
                     </RippleButton>
                     <RippleButton variant="outline" className="w-full">
@@ -70,7 +82,10 @@ const SignUp = () => {
                     </RippleButton>
                     <div className="mt-4 text-center text-sm">
                         Already have an account?{' '}
-                        <Link to="/signin" className="underline underline-offset-4">
+                        <Link
+                            to="/signin"
+                            className="underline underline-offset-4"
+                        >
                             Sign in
                         </Link>
                     </div>
