@@ -12,6 +12,13 @@ import { Label } from '@/ui/components/ui/label';
 import { Link } from 'react-router';
 
 const SignIn = () => {
+    const handleClick = async () => {
+        const data = await window.electronAPI.signin({
+            email: 'm@example.com',
+            password: 'password',
+        });
+        console.log(data);
+    }
     return (
         <div className='h-screen flex items-center justify-center'>
             <Card className="w-full max-w-md">
@@ -48,7 +55,11 @@ const SignIn = () => {
                     </form>
                 </CardContent>
                 <CardFooter className="flex-col gap-2">
-                    <RippleButton type="submit" className="w-full">
+                    <RippleButton 
+                    type="submit" 
+                    className="w-full"
+                    onClick={() => handleClick()}
+                    >
                         Login
                     </RippleButton>
                     <RippleButton variant="outline" className="w-full">
