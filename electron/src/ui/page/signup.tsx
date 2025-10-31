@@ -1,5 +1,13 @@
+import { useForm } from 'react-hook-form';
 import { Link } from 'react-router';
 
+import { zodResolver } from '@hookform/resolvers/zod';
+
+import {
+    type ISignupSchema,
+    SIGNUP_DEFAULT_SCHEMA,
+    SIGNUP_SCHEMA,
+} from '@/schema/signup';
 import {
     Card,
     CardContent,
@@ -8,19 +16,26 @@ import {
     CardHeader,
     CardTitle,
 } from '@/ui/components/ui/card';
-import { Input } from '@/ui/components/ui/input';
-import { Label } from '@/ui/components/ui/label';
 import { RippleButton } from '@/ui/components/ui/ripple-button';
 
-const SignUp = () => {
-    const handleClick = async () => {
-       const data = await  window.electronAPI.signup({
-            name: 'Shafquat',
-            email: 'm@example.com',
-            password: 'password',
-        });
+import FormWrapper from '../components/form/form';
+import FormInput from '../components/form/input';
+import FormInputPassword from '../components/form/input-password';
 
-        console.log(data);
+const SignUp = () => {
+    const form = useForm<ISignupSchema>({
+        resolver: zodResolver(SIGNUP_SCHEMA),
+        defaultValues: SIGNUP_DEFAULT_SCHEMA,
+    });
+
+    const handleClick = async (values: ISignupSchema) => {
+        // const data = await window.electronAPI.signup({
+        //     name: 'Shafquat',
+        //     email: 'm@example.com',
+        //     password: 'password',
+        // });
+
+        console.log(values);
     };
 
     return (
@@ -34,49 +49,45 @@ const SignUp = () => {
                 </CardHeader>
 
                 <CardContent>
-                    <form>
-                        <div className="flex flex-col gap-6">
-                            <div className="grid gap-2">
-                                <Label htmlFor="name">Full Name</Label>
-                                <Input
-                                    id="name"
-                                    type="text"
-                                    placeholder="John Doe"
-                                />
-                            </div>
+                    <FormWrapper onSubmit={form.handleSubmit(handleClick)}>
+                        <FormInput
+                            control={form.control}
+                            name="name"
+                            label="Full Name"
+                            placeholder="Write your full name"
+                        />
+                        <FormInput
+                            control={form.control}
+                            name="email"
+                            label="Email"
+                            placeholder="Write your mail"
+                        />
+                        <FormInputPassword
+                            control={form.control}
+                            name="password"
+                            label="Password"
+                            placeholder="Write your password"
+                        />
 
-                            <div className="grid gap-2">
-                                <Label htmlFor="email">Email</Label>
-                                <Input
-                                    id="email"
-                                    type="email"
-                                    placeholder="m@example.com"
-                                />
-                            </div>
-
-                            <div className="grid gap-2">
-                                <Label htmlFor="password">Password</Label>
-                                <Input id="password" type="password" />
-                            </div>
-
-                            <div className="grid gap-2">
-                                <Label htmlFor="confirmPassword">
-                                    Confirm Password
-                                </Label>
-                                <Input id="confirmPassword" type="password" />
-                            </div>
-                        </div>
-                    </form>
+                        {/* <FormInput
+                            form={form}
+                            name="email"
+                            label="Email"
+                            placeholder="Write your mail"
+                            type="email"
+                        />
+                        
+                        <FormInput
+                            form={form}
+                            name="confirm_password"
+                            label="Password"
+                            placeholder="Confirm password"
+                            type="password"
+                        /> */}
+                    </FormWrapper>
                 </CardContent>
 
                 <CardFooter className="flex-col gap-2">
-                    <RippleButton
-                        type="submit"
-                        className="w-full"
-                        onClick={() => handleClick()}
-                    >
-                        Sign Up
-                    </RippleButton>
                     <RippleButton variant="outline" className="w-full">
                         Sign up with Google
                     </RippleButton>

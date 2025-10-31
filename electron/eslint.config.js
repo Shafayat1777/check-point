@@ -26,6 +26,7 @@ export default defineConfig([
                 { vars: 'all', args: 'after-used', ignoreRestSiblings: true },
             ],
             'only-export-components': 'off',
+            '@typescript-eslint/no-explicit-any': 'off'
         },
     },
 ]);

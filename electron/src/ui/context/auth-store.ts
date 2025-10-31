@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-import type { IUser, IUserContext } from '../types/context';
+import type { IUser, IUserContext } from '../../types/context';
 
 const storedUser = localStorage.getItem('user');
 

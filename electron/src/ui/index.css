@@ -40,7 +40,7 @@
     --font-sans: 'Oxanium', sans-serif;
     --font-serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
     --font-mono: 'Source Code Pro', monospace;
-    --radius: 0rem;
+    --radius: 0.75rem;
     --shadow-x: 0px;
     --shadow-y: 2px;
     --shadow-blur: 4px;
@@ -100,7 +100,7 @@
     --font-sans: 'Oxanium', sans-serif;
     --font-serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
     --font-mono: 'Source Code Pro', monospace;
-    --radius: 0rem;
+    --radius: 0.75rem;
     --shadow-x: 0px;
     --shadow-y: 2px;
     --shadow-blur: 5px;
@@ -184,11 +184,10 @@
     }
 }
 
-
 .drag {
-  -webkit-app-region: drag;
+    -webkit-app-region: drag;
 }
 
 .no-drag {
-  -webkit-app-region: no-drag;
+    -webkit-app-region: no-drag;
 }
