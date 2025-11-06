@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form';
 import { Link } from 'react-router';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { toast } from 'sonner';
 
 import {
     type ISignupSchema,
@@ -16,7 +17,6 @@ import {
     CardHeader,
     CardTitle,
 } from '@/ui/components/ui/card';
-import { RippleButton } from '@/ui/components/ui/ripple-button';
 
 import FormWrapper from '../components/form/form';
 import FormInput from '../components/form/input';
@@ -29,13 +29,17 @@ const SignUp = () => {
     });
 
     const handleClick = async (values: ISignupSchema) => {
-        // const data = await window.electronAPI.signup({
-        //     name: 'Shafquat',
-        //     email: 'm@example.com',
-        //     password: 'password',
-        // });
+        if (!window.electronAPI) {
+            console.warn('⚠️ Not running inside Electron. Skipping API call.');
+            return;
+        }
 
-        console.log(values);
+        const { confirm_password, ...rest } = values;
+        const data = await window.electronAPI.signup(rest);
+
+        toast(data.message, {
+            description: JSON.stringify(data.user),
+        });
     };
 
     return (
@@ -49,7 +53,7 @@ const SignUp = () => {
                 </CardHeader>
 
                 <CardContent>
-                    <FormWrapper onSubmit={form.handleSubmit(handleClick)}>
+                    <FormWrapper buttonText='Sign Up' onSubmit={form.handleSubmit(handleClick)}>
                         <FormInput
                             control={form.control}
                             name="name"
@@ -69,29 +73,18 @@ const SignUp = () => {
                             placeholder="Write your password"
                         />
 
-                        {/* <FormInput
-                            form={form}
-                            name="email"
-                            label="Email"
-                            placeholder="Write your mail"
-                            type="email"
-                        />
-                        
                         <FormInput
-                            form={form}
+                            control={form.control}
                             name="confirm_password"
-                            label="Password"
-                            placeholder="Confirm password"
+                            label="Confirm Password"
+                            placeholder="Confirm your password"
                             type="password"
-                        /> */}
+                        />
                     </FormWrapper>
                 </CardContent>
 
                 <CardFooter className="flex-col gap-2">
-                    <RippleButton variant="outline" className="w-full">
-                        Sign up with Google
-                    </RippleButton>
-                    <div className="mt-4 text-center text-sm">
+                    <div className="mt-2 text-center text-sm">
                         Already have an account?{' '}
                         <Link
                             to="/signin"

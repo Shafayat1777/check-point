@@ -30,7 +30,9 @@ const requirements = [
     },
 ];
 
-export const FormInputPassword: IFormControlFunc = (props) => {
+export const FormInputPassword: IFormControlFunc<{ showHelper?: boolean }> = (
+    props,
+) => {
     const [showPassword, setShowPassword] = useState(false);
     const [password, setPassword] = useState('');
 
@@ -64,10 +66,9 @@ export const FormInputPassword: IFormControlFunc = (props) => {
     };
 
     return (
-        <FormBase {...props}>
-            {(props) => (
-                // <Input {...props} type="password" className={cn(props.className)} />
-                <>
+        <>
+            <FormBase {...props}>
+                {(props) => (
                     <InputGroup>
                         <InputGroupInput
                             {...props}
@@ -88,58 +89,58 @@ export const FormInputPassword: IFormControlFunc = (props) => {
                             </InputGroupButton>
                         </InputGroupAddon>
                     </InputGroup>
-                    <div className="mt-2">
-                        <div className="mb-4 flex h-1 w-full gap-1">
-                            {Array.from({ length: 5 }).map((_, index) => (
-                                <span
-                                    key={index}
-                                    className={cn(
-                                        'h-full flex-1 rounded-full transition-all duration-500 ease-out',
-                                        index < strengthScore
-                                            ? getColor(strengthScore)
-                                            : 'bg-border',
-                                    )}
-                                />
-                            ))}
-                        </div>
+                )}
+            </FormBase>
 
-                        <p className="text-foreground text-sm font-medium">
-                            {getText(strengthScore)}. Must contain:
-                        </p>
-
-                        <ul className="mb-4 space-y-1.5">
-                            {strength.map((req, index) => (
-                                <li
-                                    key={index}
-                                    className="flex items-center gap-2"
-                                >
-                                    {req.met ? (
-                                        <CheckIcon className="size-4 text-green-600 dark:text-green-400" />
-                                    ) : (
-                                        <XIcon className="text-muted-foreground size-4" />
-                                    )}
-                                    <span
-                                        className={cn(
-                                            'text-xs',
-                                            req.met
-                                                ? 'text-green-600 dark:text-green-400'
-                                                : 'text-muted-foreground',
-                                        )}
-                                    >
-                                        {req.text}
-                                        <span className="sr-only">
-                                            {req.met
-                                                ? ' - Requirement met'
-                                                : ' - Requirement not met'}
-                                        </span>
-                                    </span>
-                                </li>
-                            ))}
-                        </ul>
+            {props.showHelper && (
+                <div className="">
+                    <div className="mb-4 flex h-1 w-full gap-1">
+                        {Array.from({ length: 5 }).map((_, index) => (
+                            <span
+                                key={index}
+                                className={cn(
+                                    'h-full flex-1 rounded-full transition-all duration-500 ease-out',
+                                    index < strengthScore
+                                        ? getColor(strengthScore)
+                                        : 'bg-border',
+                                )}
+                            />
+                        ))}
                     </div>
-                </>
+
+                    <p className="text-foreground text-sm font-medium">
+                        {getText(strengthScore)}. Must contain:
+                    </p>
+
+                    <ul className="mb-4 space-y-1.5">
+                        {strength.map((req, index) => (
+                            <li key={index} className="flex items-center gap-2">
+                                {req.met ? (
+                                    <CheckIcon className="size-4 text-green-600 dark:text-green-400" />
+                                ) : (
+                                    <XIcon className="text-muted-foreground size-4" />
+                                )}
+                                <span
+                                    className={cn(
+                                        'text-xs',
+                                        req.met
+                                            ? 'text-green-600 dark:text-green-400'
+                                            : 'text-muted-foreground',
+                                    )}
+                                >
+                                    {req.text}
+                                    <span className="sr-only">
+                                        {req.met
+                                            ? ' - Requirement met'
+                                            : ' - Requirement not met'}
+                                    </span>
+                                </span>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             )}
-        </FormBase>
+        </>
     );
 };
 

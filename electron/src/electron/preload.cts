@@ -1,3 +1,5 @@
+import type { IAuthResponse } from '../types';
+
 const { contextBridge, ipcRenderer } = require('electron');
 
 contextBridge.exposeInMainWorld('electronAPI', {

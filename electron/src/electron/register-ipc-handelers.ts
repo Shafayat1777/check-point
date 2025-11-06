@@ -1,5 +1,7 @@
 import { dialog, ipcMain } from 'electron';
 
+import type { IAuthResponse, IUser } from '../types/index.ts';
+
 export function registerIpcHandlers(mainWindow: Electron.BrowserWindow) {
     ipcMain.on('window-control', (event, action) => {
         if (!mainWindow) return;
@@ -28,20 +30,23 @@ export function registerIpcHandlers(mainWindow: Electron.BrowserWindow) {
         return result.canceled ? null : result.filePaths[0];
     });
 
-    ipcMain.handle('auth_signup',async (_,userData) => {
-    console.log('Received Data',userData);
-    return{
-        success: true,
-        message: 'Signup data Received',
-        data: userData
-    };
-    });
-    ipcMain.handle('auth_signin',async (_,userData) => {
-        console.log('Received Data',userData);
-        return{
+    ipcMain.handle(
+        'auth_signup',
+        async (_, userData: IUser): Promise<IAuthResponse> => {
+            console.log(userData.name);
+            return {
+                success: true,
+                message: 'Signup data Received',
+                user: userData,
+            };
+        },
+    );
+
+    ipcMain.handle('auth_signin', async (_, userData) => {
+        return {
             success: true,
             message: 'Signin data Received',
-            data: userData
+            data: userData,
         };
     });
 }

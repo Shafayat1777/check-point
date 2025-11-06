@@ -3,6 +3,8 @@ import type { ControllerProps, FieldPath, FieldValues } from 'react-hook-form';
 
 export type IFormWrapperProps = {
     className?: string;
+    showCancel?: boolean;
+    buttonText?: string;
     onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
     children: React.ReactNode;
 };
@@ -41,7 +43,6 @@ export type IFormControlProps<
     TTransformedValues = TFieldValues,
 > = {
     // type?: React.HTMLInputTypeAttribute;
-    type?: 'email' | 'password' | 'text' | 'number' | 'url';
     name: TName;
     label?: ReactNode;
     description?: string;

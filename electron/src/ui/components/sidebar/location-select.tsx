@@ -11,7 +11,6 @@ const LocationSelect = () => {
 
     const handleBrowse = async () => {
         try {
-            // @ts-expect-error asdasd
             const selectedPath = await window.electronAPI.selectFolder();
             if (selectedPath) setFolderPath(selectedPath);
         } catch (error) {

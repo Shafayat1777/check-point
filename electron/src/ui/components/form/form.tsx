@@ -6,24 +6,33 @@ import { RippleButton } from '../ui/ripple-button';
 
 const FormWrapper: React.FC<IFormWrapperProps> = ({
     className = '',
+    showCancel = false,
+    buttonText = 'Submit',
     onSubmit,
     children,
 }) => {
     return (
         <form onSubmit={onSubmit}>
-            <FieldGroup className={cn('gap-6',className)}>
-                {children}{' '}
-                <div className='flex gap-4'>
-                    <Field orientation="responsive">
+            <FieldGroup className={cn('gap-4', className)}>
+                {children}
+                <div className="flex gap-4">
+                    <Field>
                         <RippleButton type="submit" className="w-full">
-                            Submit
+                            {buttonText}
                         </RippleButton>
                     </Field>
-                    <Field orientation="responsive">
-                        <RippleButton type="reset" className="w-full" variant='outline'>
-                            Cancel
-                        </RippleButton>
-                    </Field>
+
+                    {showCancel && (
+                        <Field>
+                            <RippleButton
+                                type="reset"
+                                className="w-full"
+                                variant="outline"
+                            >
+                                Cancel
+                            </RippleButton>
+                        </Field>
+                    )}
                 </div>
             </FieldGroup>
         </form>

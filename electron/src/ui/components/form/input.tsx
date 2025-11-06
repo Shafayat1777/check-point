@@ -4,9 +4,13 @@ import type { IFormControlFunc } from '@/types/form';
 import { Input } from '../ui/input';
 import FormBase from './base';
 
-export const FormInput: IFormControlFunc = (props) => (
+export const FormInput: IFormControlFunc<{
+    type?: 'email' | 'password' | 'text' | 'number' | 'url';
+}> = (props) => (
     <FormBase {...props}>
-        {(props) => <Input {...props}  className={cn(props.className)} />}
+        {(baseProps) => (
+            <Input {...baseProps} className={cn(baseProps.className)} type={props.type} />
+        )}
     </FormBase>
 );
 
