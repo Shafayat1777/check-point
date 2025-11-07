@@ -1,9 +1,9 @@
 import { Navigate, Outlet } from 'react-router';
 
-import { useUser } from '@/ui/context/auth-store';
+import { authClient } from '@/lib/auth-client';
 
 export default function PublicRoute() {
-    const { user } = useUser();
-    if (user) return <Navigate to="/" replace />;
+    const { data } = authClient.useSession();
+    if (data) return <Navigate to="/" replace />;
     return <Outlet />;
 }

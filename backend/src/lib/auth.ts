@@ -31,5 +31,9 @@ export const auth = betterAuth({
             });
         },
     },
+    // trustedOrigins: [
+    //     'http://localhost:5123', // your frontend origin
+    //     'http://localhost:3000', // backend (same-origin requests)
+    // ],
     plugins: [openAPI()],
 });

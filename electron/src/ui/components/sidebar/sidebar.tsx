@@ -18,6 +18,7 @@ import {
 
 import ThemeSwitch from '../theme-switch';
 import { AddGames } from './add-games';
+import Setting from './settings';
 
 export function AppSidebar() {
     return (
@@ -69,13 +70,12 @@ export function AppSidebar() {
             <SidebarFooter>
                 <SidebarMenu>
                     <SidebarMenuItem>
-                        <AddGames>
-                            <SidebarMenuButton asChild variant={'outline'}>
-                                <NavLink to="/settings">
-                                    <Settings /> <span>Settings</span>
-                                </NavLink>
+                        <Setting>
+                            <SidebarMenuButton variant="outline">
+                                <Settings />
+                                Settings
                             </SidebarMenuButton>
-                        </AddGames>
+                        </Setting>
                     </SidebarMenuItem>
                     <SidebarMenuItem>
                         <AddGames>

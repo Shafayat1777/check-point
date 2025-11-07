@@ -1,13 +1,12 @@
-// components/ProtectedRoute.tsx
 import { Navigate, Outlet } from 'react-router';
 
-import { useUser } from '@/ui/context/auth-store';
+import { authClient } from '@/lib/auth-client';
 
 export default function ProtectedRoute() {
-    const { user } = useUser();
+    const { data } = authClient.useSession();
 
     // if user not logged in, redirect to signin
-    if (!user) {
+    if (!data) {
         return <Navigate to="/signin" replace />;
     }
 

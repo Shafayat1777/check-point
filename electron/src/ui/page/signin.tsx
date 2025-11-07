@@ -1,4 +1,14 @@
-import { RippleButton } from '@/ui/components/ui/ripple-button';
+import { useForm } from 'react-hook-form';
+import { Link } from 'react-router';
+
+import { zodResolver } from '@hookform/resolvers/zod';
+import { toast } from 'sonner';
+
+import {
+    type ISigninSchema,
+    SIGNIN_DEFAULT_SCHEMA,
+    SIGNIN_SCHEMA,
+} from '@/schema/signin';
 import {
     Card,
     CardContent,
@@ -7,20 +17,34 @@ import {
     CardHeader,
     CardTitle,
 } from '@/ui/components/ui/card';
-import { Input } from '@/ui/components/ui/input';
-import { Label } from '@/ui/components/ui/label';
-import { Link } from 'react-router';
+
+import FormWrapper from '../components/form/form';
+import FormInput from '../components/form/input';
+import FormInputPassword from '../components/form/input-password';
 
 const SignIn = () => {
-    const handleClick = async () => {
-        const data = await window.electronAPI.signin({
-            email: 'm@example.com',
-            password: 'password',
+    
+
+    const form = useForm<ISigninSchema>({
+        resolver: zodResolver(SIGNIN_SCHEMA),
+        defaultValues: SIGNIN_DEFAULT_SCHEMA,
+    });
+
+    const handleClick = async (value: ISigninSchema) => {
+        if (!window.electronAPI) {
+            console.warn('⚠️ Not running inside Electron. Skipping API call.');
+            return;
+        }
+
+        const data = await window.electronAPI.signin(value);
+
+        toast(data.message, {
+            description: JSON.stringify(data.user),
         });
-        console.log(data);
-    }
+    };
+
     return (
-        <div className='h-screen flex items-center justify-center'>
+        <div className="flex h-screen items-center justify-center">
             <Card className="w-full max-w-md">
                 <CardHeader>
                     <CardTitle>Login to your account</CardTitle>
@@ -29,45 +53,31 @@ const SignIn = () => {
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
-                    <form>
-                        <div className="flex flex-col gap-6">
-                            <div className="grid gap-2">
-                                <Label htmlFor="email">Email</Label>
-                                <Input
-                                    id="email"
-                                    type="email"
-                                    placeholder="m@example.com"
-                                />
-                            </div>
-                            <div className="grid gap-2">
-                                <div className="flex items-center">
-                                    <Label htmlFor="password">Password</Label>
-                                    <a
-                                        href="#"
-                                        className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
-                                    >
-                                        Forgot your password?
-                                    </a>
-                                </div>
-                                <Input id="password" type="password" />
-                            </div>
-                        </div>
-                    </form>
+                    <FormWrapper
+                        buttonText="Sign In"
+                        onSubmit={form.handleSubmit(handleClick)}
+                    >
+                        <FormInput
+                            control={form.control}
+                            name="email"
+                            label="Email"
+                            placeholder="Write your mail"
+                        />
+                        <FormInputPassword
+                            control={form.control}
+                            name="password"
+                            label="Password"
+                            placeholder="Write your password"
+                        />
+                    </FormWrapper>
                 </CardContent>
                 <CardFooter className="flex-col gap-2">
-                    <RippleButton 
-                    type="submit" 
-                    className="w-full"
-                    onClick={() => handleClick()}
-                    >
-                        Login
-                    </RippleButton>
-                    <RippleButton variant="outline" className="w-full">
-                        Continue with Google
-                    </RippleButton>
                     <div className="mt-4 text-center text-sm">
                         Don&apos;t have an account?{' '}
-                        <Link to="/signup" className="underline underline-offset-4">
+                        <Link
+                            to="/signup"
+                            className="underline underline-offset-4"
+                        >
                             Sign up
                         </Link>
                     </div>

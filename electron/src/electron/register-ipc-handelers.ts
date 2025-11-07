@@ -1,6 +1,15 @@
-import { dialog, ipcMain } from 'electron';
+import dotenv from 'dotenv';
+import { dialog, ipcMain, net } from 'electron';
 
-import type { IAuthResponse, IUser } from '../types/index.ts';
+import type {
+    IAuthResponse,
+    ISignin,
+    ISigninResponse,
+    IUser,
+} from '../types/index.ts';
+
+// Load env vars
+dotenv.config({ path: '.env.development' });
 
 export function registerIpcHandlers(mainWindow: Electron.BrowserWindow) {
     ipcMain.on('window-control', (event, action) => {
@@ -33,7 +42,6 @@ export function registerIpcHandlers(mainWindow: Electron.BrowserWindow) {
     ipcMain.handle(
         'auth_signup',
         async (_, userData: IUser): Promise<IAuthResponse> => {
-            console.log(userData.name);
             return {
                 success: true,
                 message: 'Signup data Received',
@@ -42,11 +50,29 @@ export function registerIpcHandlers(mainWindow: Electron.BrowserWindow) {
         },
     );
 
-    ipcMain.handle('auth_signin', async (_, userData) => {
-        return {
-            success: true,
-            message: 'Signin data Received',
-            data: userData,
-        };
-    });
+    ipcMain.handle(
+        'auth_signin',
+        async (_, userData: ISignin): Promise<ISigninResponse> => {
+            const response = await net.fetch(
+                `${process.env.AUTH_API}/sign-in/email`,
+                {
+                    method: 'POST',
+                    body: JSON.stringify(userData),
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    credentials: 'include',
+                },
+            );
+
+            const json = await response.json();
+            console.log(json);
+
+            return {
+                success: true,
+                message: 'Signin data Received',
+                user: userData,
+            };
+        },
+    );
 }

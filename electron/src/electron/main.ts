@@ -6,13 +6,16 @@ import { registerIpcHandlers } from './register-ipc-handelers.js';
 import { isDev } from './utils.js';
 
 app.whenReady().then(() => {
+    // const ses = session.fromPartition('persist:auth');
+
     const mainWindow = new BrowserWindow({
         webPreferences: {
             preload: getPreloadPath(),
+            // session: ses,
         },
         frame: true,
-        width: 1000,
-        height: 1000,
+        width: 500,
+        height: 500,
     });
     if (isDev()) {
         mainWindow.loadURL('http://localhost:5123');

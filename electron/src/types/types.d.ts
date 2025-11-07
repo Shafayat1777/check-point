@@ -1,4 +1,9 @@
-import type { IAuthResponse, IUser } from '@/types/index';
+import type {
+    IAuthResponse,
+    ISignin,
+    ISigninResponse,
+    IUser,
+} from '@/types/index';
 
 declare global {
     interface Window {
@@ -8,7 +13,7 @@ declare global {
             close: () => void;
             selectFolder: () => Promise<string | null>;
             signup: (data: IUser) => Promise<IAuthResponse>;
-            signin: (data: IUser) => Promise<IUser>;
+            signin: (data: ISignin) => Promise<ISigninResponse>;
         };
     }
 }
