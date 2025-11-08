@@ -53,26 +53,49 @@ export function registerIpcHandlers(mainWindow: Electron.BrowserWindow) {
     ipcMain.handle(
         'auth_signin',
         async (_, userData: ISignin): Promise<ISigninResponse> => {
-            const response = await net.fetch(
-                `${process.env.AUTH_API}/sign-in/email`,
-                {
-                    method: 'POST',
-                    body: JSON.stringify(userData),
-                    headers: {
-                        'Content-Type': 'application/json',
+            try {
+                const response = await net.fetch(
+                    `${process.env.AUTH_API}/sign-in/email`,
+                    {
+                        method: 'POST',
+                        body: JSON.stringify(userData),
+                        headers: {
+                            'Content-Type': 'application/json',
+                            Origin: 'http://localhost:5123', // Required for CORS with Better Auth
+                        },
+                        credentials: 'include',
                     },
-                    credentials: 'include',
-                },
-            );
+                );
 
-            const json = await response.json();
-            console.log(json);
+                // Handle non-2xx status codes gracefully
+                if (!response.ok) {
+                    const errorJson = await response.json().catch(() => ({}));
+                    return {
+                        success: false,
+                        message:
+                            errorJson.message ||
+                            `Request failed with status ${response.status}`,
+                        user: userData,
+                    };
+                }
 
-            return {
-                success: true,
-                message: 'Signin data Received',
-                user: userData,
-            };
+                // Parse success response
+                const json = await response.json();
+                return {
+                    success: true,
+                    message: json.message || 'Sign-in successful',
+                    user: json.user || userData,
+                };
+            } catch (error: any) {
+                // Handle network or unexpected errors
+                console.error('Sign-in error:', error);
+                return {
+                    success: false,
+                    message:
+                        error.message || 'Network or server error occurred',
+                    user: userData,
+                };
+            }
         },
     );
 }

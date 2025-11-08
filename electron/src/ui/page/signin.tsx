@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
@@ -23,7 +23,7 @@ import FormInput from '../components/form/input';
 import FormInputPassword from '../components/form/input-password';
 
 const SignIn = () => {
-    
+    const navigate = useNavigate();
 
     const form = useForm<ISigninSchema>({
         resolver: zodResolver(SIGNIN_SCHEMA),
@@ -38,9 +38,12 @@ const SignIn = () => {
 
         const data = await window.electronAPI.signin(value);
 
-        toast(data.message, {
-            description: JSON.stringify(data.user),
-        });
+        if (data.success) {
+            toast.success(data.message);
+            navigate('/', { replace: true });
+        } else {
+            toast.error(data.message);
+        }
     };
 
     return (
